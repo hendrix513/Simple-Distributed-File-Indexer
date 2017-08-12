@@ -11,8 +11,9 @@ def blobToWords(blobStr: str)-> list:
     return words
 
 def topTenWordCounts(words: list)-> list:
-    counts = defaultdict(int)
+    c = defaultdict(int)
     for word in words:
-        counts[word.lower()] += 1
+        c[word.lower()] += 1
         
-    return Counter(counts).most_common(10)
+    return sorted(c.items(), key=lambda x: x[1],
+                  reverse=True)[:10]
